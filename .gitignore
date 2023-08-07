@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# See https://www.google.com/url?sa=i&url=https%3A%2F%2Fuizard.io%2Ftemplates%2Fweb-app-templates%2Fweather-web-app-dark%2F&psig=AOvVaw0oTIcvdaQ9JFuydMVrhbG1&ust=1691457596193000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqGAoTCICQsNuwyYADFQAAAAAdAAAAABC8AQ for Wireframe.
+
 # dependencies
 /node_modules
 /.pnp

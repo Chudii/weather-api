@@ -21,7 +21,10 @@ function App() {
           <img />
         </div>
         <div className='day-forecast'>
-          
+          <p>TODAY'S FORECAST</p>
+          <div>
+            
+          </div>
         </div>
         <div className='air-conditions'>
 

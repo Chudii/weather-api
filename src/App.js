@@ -1,6 +1,10 @@
+import { useState } from 'react';
+import axios from 'axios';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [data, setData] = useState([])
+
   return (
     <div className="App">
       <form>
@@ -22,7 +26,7 @@ function App() {
         </div>
         <div className='day-forecast'>
           <p>TODAY'S FORECAST</p>
-          <div>
+          <div className='day-times'>
             
           </div>
         </div>

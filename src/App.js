@@ -1,9 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
 const App = () => {
   const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsError(false)
+      setIsLoading(true)
+
+      try {
+        const results = await axios("https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&appid=65d04fbbdd2d88832927515ecaae77b7")
+
+        console.log(results)
+      } catch (err) {
+        setIsError(true)
+        console.log(err)
+        setTimeout(() => setIsError(false), 4000)
+      }
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <div className="App">

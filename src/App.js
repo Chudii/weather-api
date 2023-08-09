@@ -55,7 +55,6 @@ const App = () => {
         <div className='day-forecast'>
           <p>TODAY'S FORECAST</p>
           <div className='day-times'>
-            
           </div>
         </div>
         <div className='air-conditions'>

@@ -85,21 +85,20 @@ const App = () => {
         </form>
 
         <div className='city'>
-          <div>
-            <h2>{cityData[0].name}</h2>
-            <p>Chance of rain: 0%</p>
-            <h1>77°</h1>
-          </div>
-          <img />
-        </div>
-        <div className='day-forecast'>
-          <p>TODAY'S FORECAST</p>
-          <div className='day-times'>
-            
-          </div>
-        </div>
-        <div className='air-conditions'>
-
+          {
+            weatherData.current && 
+            <div>
+              <h2>{cityData[0].name}</h2>
+              <div>
+                <h1>{Math.round(weatherData.current.temp)}°</h1>
+                <img />
+              </div>  
+              
+              <p>Winds: {Math.round(weatherData.current.wind_speed)} mph</p>
+              <p>Precipitation: {weatherData.daily[0].pop * 100}%</p>
+              <p>Humidty: {weatherData.current.humidity}%</p>
+            </div>
+          }  
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import './App.css';
 import Daily from './components/daily';
 
 const App = () => {
+  const [search, setSearch] = useState({})
   const [weatherData, setWeatherData] = useState([])
   const [cityData, setCityData] = useState('Newark')
   const [isLoading, setIsLoading] = useState(false)
@@ -35,20 +36,57 @@ const App = () => {
     fetchData()
   }, [])
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const fetchData = async () => {
+      try {
+        const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=1&appid=65d04fbbdd2d88832927515ecaae77b7`)
+
+        console.log(city.data)
+
+        let lat = city.data[0].lat
+        let lon = city.data[0].lon
+
+        setCityData(city.data)
+
+        const weather = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=65d04fbbdd2d88832927515ecaae77b7`)
+
+        console.log(weather.data)
+
+        setWeatherData(weather.data)
+      } catch (err) {
+        console.log(err)
+        setIsError(true)
+        setTimeout(() => setIsError(false), 4000)
+      }
+    }
+
+    fetchData()
+  }
+
   return (
     <div className="App">
-      <form>
-        <input
-          placeholder='Search for City...'
-        />
+      <div className='current-day'>
+        <form>
+          <input
+            type='text'
+            onChange={handleSearch}
+            placeholder='Search for City...'
+          />
 
-        <button>Search</button>
-      </form>
-      
-      <div className='day'>
+          <button 
+            type='submit'
+            onClick={handleSubmit}
+          >Search</button>
+        </form>
+
         <div className='city'>
           <div>
-            <h2>Newark</h2>
+            <h2>{cityData[0].name}</h2>
             <p>Chance of rain: 0%</p>
             <h1>77°</h1>
           </div>

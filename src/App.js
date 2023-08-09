@@ -3,7 +3,8 @@ import axios from 'axios';
 import './App.css';
 
 const App = () => {
-  const [data, setData] = useState([])
+  const [weatherData, setWeatherData] = useState([])
+  const [cityData, setCityData] = useState('Newark')
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
@@ -13,9 +14,15 @@ const App = () => {
       setIsLoading(true)
 
       try {
-        const results = await axios("https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&appid=65d04fbbdd2d88832927515ecaae77b7")
+        const weatherResult = await axios("https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&appid=65d04fbbdd2d88832927515ecaae77b7")
 
-        console.log(results)
+        const cityResult = await axios("http://api.openweathermap.org/geo/1.0/direct?q=Newark&limit=1&appid=65d04fbbdd2d88832927515ecaae77b7")
+
+        console.log(weatherResult.data)
+        console.log(cityResult.data)
+
+        setWeatherData(weatherResult.data)
+        setCityData(cityResult.data)
       } catch (err) {
         setIsError(true)
         console.log(err)

@@ -2,7 +2,9 @@ import { useState } from "react"
 
 const Daily = ({ time, weather, tempHi, tempLo }) => {
     const [timestamp, setTimestamp] = useState({
-        day: new Date(time * 1000).toLocaleString('default', { weekday: 'short' }).toUpperCase()
+        day: new Date(time * 1000).toLocaleString('default', { weekday: 'short' }).toUpperCase(),
+        month: new Date(time * 1000).getMonth(),
+        dayOfMonth: new Date(time * 1000).getDate()
     })
 
     return (

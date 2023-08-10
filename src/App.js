@@ -7,6 +7,11 @@ const App = () => {
   const [search, setSearch] = useState({})
   const [weatherData, setWeatherData] = useState([])
   const [cityData, setCityData] = useState('Newark')
+  const [timestamp, setTimestamp] = useState({
+    day: new Date().toLocaleString('default', { weekday: 'long' }),
+    month: new Date().toLocaleString('default', { month: 'long' }),
+    dayOfMonth: new Date().getDate()
+  })
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
   const [timezone, setTimezone] = useState(Intl.DateTimeFormat().resolvedOptions().timeZone)
@@ -90,6 +95,18 @@ const App = () => {
             <div>
               <h2>{cityData[0].name}</h2>
               <div>
+                <p>
+                  {`${timestamp.day}, ${timestamp.month} `}
+                  {
+                    timestamp.dayOfMonth > 2
+                      ? `${timestamp.dayOfMonth}th`
+                      : timestamp.dayOfMonth == 2
+                        ? `${timestamp.dayOfMonth}nd`
+                        : `${timestamp.dayOfMonth}st`
+                  }
+                </p>
+              </div>
+              <div>
                 <h1>{Math.round(weatherData.current.temp)}°</h1>
                 <img />
               </div>  
@@ -103,7 +120,7 @@ const App = () => {
       </div>
 
       <div className='week'>
-
+        
       </div>
     </div>
   );

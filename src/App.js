@@ -120,7 +120,14 @@ const App = () => {
       </div>
 
       <div className='week'>
-        
+        {
+          weatherData.daily &&
+          <Daily
+            time={weatherData.daily[1].dt}
+            tempHi={weatherData.daily[1].temp.max}
+            tempLo={weatherData.daily[1].temp.min}
+          />
+        }
       </div>
     </div>
   );

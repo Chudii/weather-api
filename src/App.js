@@ -118,15 +118,24 @@ const App = () => {
           }  
         </div>
       </div>
+      
+      <div>
+        -------------------------------
+      </div>
 
       <div className='week'>
         {
           weatherData.daily &&
-          <Daily
-            time={weatherData.daily[1].dt}
-            tempHi={weatherData.daily[1].temp.max}
-            tempLo={weatherData.daily[1].temp.min}
-          />
+          weatherData.daily.slice(1).map((x, i) => {
+            return (
+              <Daily
+                key={i}
+                time={weatherData.daily[i+1].dt}
+                tempHi={weatherData.daily[i+1].temp.max}
+                tempLo={weatherData.daily[i+1].temp.min}
+              />
+            )
+          })
         }
       </div>
     </div>

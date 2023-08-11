@@ -15,7 +15,7 @@ const Daily = ({ time, weather, tempHi, tempLo }) => {
             </div>
             
             <img />
-            <h4>{Math.round(tempHi)}°|{Math.round(tempLo)}°</h4>
+            <h4>{Math.round(tempHi)}° | {Math.round(tempLo)}°</h4>
         </div>
     )
 }

@@ -96,14 +96,7 @@ const App = () => {
               <h2>{cityData[0].name}</h2>
               <div>
                 <p>
-                  {`${timestamp.day}, ${timestamp.month} `}
-                  {
-                    timestamp.dayOfMonth > 2
-                      ? `${timestamp.dayOfMonth}th`
-                      : timestamp.dayOfMonth == 2
-                        ? `${timestamp.dayOfMonth}nd`
-                        : `${timestamp.dayOfMonth}st`
-                  }
+                  {`${timestamp.day}, ${timestamp.month} ${timestamp.dayOfMonth}`}
                 </p>
               </div>
               <div>

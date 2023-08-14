@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './App.css';
 import Daily from './components/daily';
 import Icon from './components/icon';
+import './styles/index.css'
 
 const App = () => {
   const [search, setSearch] = useState({})
@@ -102,7 +102,12 @@ const App = () => {
               </div>
               <div>
                 <h1>{Math.round(weatherData.current.temp)}°</h1>
-                <img />
+                <Icon 
+                  weather={weatherData.current.weather[0].main}
+                  currentTime={weatherData.current.dt}
+                  sunrise={weatherData.current.sunrise}
+                  sunset={weatherData.current.sunset}
+                />
               </div>  
               
               <p>Winds: {Math.round(weatherData.current.wind_speed)} mph</p>

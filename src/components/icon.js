@@ -11,7 +11,7 @@ import {
     WeatherAlert
   } from '../assets/img/index.js'
 
-const Icon = ({ weather, currentTime = 2, sunrise = 1 , sunset = 3 }) => {
+const Icon = ({ weather, description, currentTime = 2, sunrise = 1 , sunset = 3 }) => {
     const iconSelect = (weather) => {
         switch (weather) {
             case 'Fog':
@@ -40,14 +40,14 @@ const Icon = ({ weather, currentTime = 2, sunrise = 1 , sunset = 3 }) => {
                 switch (weather) {
                     case 'Clear':
                         return Sunny
-                    case 'Cloudy':
+                    case 'Clouds':
                         return PartlyCloudySun
                 }
             } else {
                 switch (weather) {
                     case 'Clear':
                         return Moon
-                    case 'Cloudy':
+                    case 'Clouds':
                         return PartlyCloudyMoon
                 }
             }
@@ -55,7 +55,7 @@ const Icon = ({ weather, currentTime = 2, sunrise = 1 , sunset = 3 }) => {
             switch (weather) {
                 case 'Clear':
                     return Moon
-                case 'Cloudy':
+                case 'Clouds':
                     return PartlyCloudyMoon
             }
         }
@@ -67,6 +67,7 @@ const Icon = ({ weather, currentTime = 2, sunrise = 1 , sunset = 3 }) => {
                 className='icon'
                 src={iconSelect(weather)}
             />
+            <p>{description}</p>
         </div>
     )
 }

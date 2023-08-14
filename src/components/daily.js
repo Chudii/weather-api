@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Icon from "./icon"
 
 const Daily = ({ time, weather, tempHi, tempLo }) => {
     const [timestamp, setTimestamp] = useState({
@@ -14,7 +15,9 @@ const Daily = ({ time, weather, tempHi, tempLo }) => {
                 <p>{timestamp.month}/{timestamp.dayOfMonth}</p>
             </div>
             
-            <img />
+            <Icon 
+                weather={weather}
+            />
             <h4>{Math.round(tempHi)}° | {Math.round(tempLo)}°</h4>
         </div>
     )

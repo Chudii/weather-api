@@ -1,6 +1,10 @@
 
 
 
-.icon-container > img {
+.city .icon-container > img {
     width: 100px;
+}
+
+.week .icon-container > img {
+    width: 50px;
 }

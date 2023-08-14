@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Daily from './components/daily';
 import Icon from './components/icon';
+
 import './styles/index.css'
 
 const App = () => {
@@ -21,11 +22,13 @@ const App = () => {
     const fetchData = async () => {
       setIsError(false)
       setIsLoading(true)
+      const API = process.env.API_KEY
+      console.log(API)
 
       try {
-        const weatherResult = await axios("https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&units=imperial&appid=65d04fbbdd2d88832927515ecaae77b7")
+        const weatherResult = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&units=imperial&appid=${process.env.API_KEY}`)
 
-        const cityResult = await axios("http://api.openweathermap.org/geo/1.0/direct?q=Newark&limit=1&appid=65d04fbbdd2d88832927515ecaae77b7")
+        const cityResult = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=Newark&limit=1&appid=${process.env.API_KEY}`)
 
         console.log(weatherResult.data)
         console.log(cityResult.data)
@@ -129,6 +132,7 @@ const App = () => {
             return (
               <Daily
                 key={i}
+                weather={weatherData.daily[i+1].weather[0].main}
                 time={weatherData.daily[i+1].dt}
                 tempHi={weatherData.daily[i+1].temp.max}
                 tempLo={weatherData.daily[i+1].temp.min}

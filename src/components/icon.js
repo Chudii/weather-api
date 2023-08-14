@@ -67,7 +67,10 @@ const Icon = ({ weather, description, currentTime = 2, sunrise = 1 , sunset = 3 
                 className='icon'
                 src={iconSelect(weather)}
             />
-            <p>{description}</p>
+            {
+                description &&
+                <p>{description}</p>
+            }
         </div>
     )
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import Daily from './components/daily';
+import Icon from './components/icon';
 
 const App = () => {
   const [search, setSearch] = useState({})

@@ -9,9 +9,9 @@ import {
     PartlyCloudyMoon,
     RainCloudsPouring,
     WeatherAlert
-  } from './assets/img/index.js'
+  } from '../assets/img/index.js'
 
-const Icon = ({ weather, currentTime, sunrise, sunset }) => {
+const Icon = ({ weather, currentTime = 2, sunrise = 1 , sunset = 3 }) => {
     const iconSelect = (weather) => {
         switch (weather) {
             case 'Fog':
@@ -37,19 +37,34 @@ const Icon = ({ weather, currentTime, sunrise, sunset }) => {
 
         if (currentTime >= sunrise) {
             if (currentTime < sunset) {
-
+                switch (weather) {
+                    case 'Clear':
+                        return Sunny
+                    case 'Cloudy':
+                        return PartlyCloudySun
+                }
             } else {
-
+                switch (weather) {
+                    case 'Clear':
+                        return Moon
+                    case 'Cloudy':
+                        return PartlyCloudyMoon
+                }
             }
         } else {
-            
+            switch (weather) {
+                case 'Clear':
+                    return Moon
+                case 'Cloudy':
+                    return PartlyCloudyMoon
+            }
         }
     }
 
     return (
-        <div>
-            <img 
-                className=''
+        <div className='icon-container'>
+            <img
+                className='icon'
                 src={iconSelect(weather)}
             />
         </div>

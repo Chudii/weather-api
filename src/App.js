@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Daily from './components/daily';
 import Icon from './components/icon';
-
 import './styles/index.css'
 
 const App = () => {
@@ -22,13 +21,12 @@ const App = () => {
     const fetchData = async () => {
       setIsError(false)
       setIsLoading(true)
-      const API = process.env.API_KEY
-      console.log(API)
+      const API = process.env.REACT_APP_API_KEY
 
       try {
-        const weatherResult = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&units=imperial&appid=${process.env.API_KEY}`)
+        const weatherResult = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&units=imperial&appid=${API}`)
 
-        const cityResult = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=Newark&limit=1&appid=${process.env.API_KEY}`)
+        const cityResult = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=Newark&limit=1&appid=${API}`)
 
         console.log(weatherResult.data)
         console.log(cityResult.data)

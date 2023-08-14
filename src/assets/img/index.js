@@ -3,7 +3,7 @@ import Moon from './moon.png';
 import Cloudy from './cloudy.png';
 import Snow from './snow.png';
 import Storm from './storm.png'
-import RainClouds from './rain-clouds';
+import RainClouds from './rain-clouds.png';
 import PartlyCloudySun from './partly-cloudy-sun.png';
 import PartlyCloudyMoon from './partly-cloudy-moon.png';
 import RainCloudsPouring from './rain-clouds-pouring.png';

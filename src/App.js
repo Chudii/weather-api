@@ -5,7 +5,8 @@ import Icon from './components/icon';
 import './styles/index.css'
 
 const App = () => {
-  const [search, setSearch] = useState({})
+  const [search, setSearch] = useState("")
+  const [results, setResults] = useState({})
   const [weatherData, setWeatherData] = useState([])
   const [cityData, setCityData] = useState('Newark')
   const [timestamp, setTimestamp] = useState({
@@ -13,20 +14,16 @@ const App = () => {
     month: new Date().toLocaleString('default', { month: 'long' }),
     dayOfMonth: new Date().getDate()
   })
-  const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
   const [timezone, setTimezone] = useState(Intl.DateTimeFormat().resolvedOptions().timeZone)
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsError(false)
-      setIsLoading(true)
       const API = process.env.REACT_APP_API_KEY
 
       try {
         const weatherResult = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&units=imperial&appid=${API}`)
 
-        const cityResult = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=Newark&limit=1&appid=${API}`)
+        const cityResult = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=Newark,NJ,US&limit=5&appid=${API}`)
 
         console.log(weatherResult.data)
         console.log(cityResult.data)
@@ -34,9 +31,7 @@ const App = () => {
         setWeatherData(weatherResult.data)
         setCityData(cityResult.data)
       } catch (err) {
-        setIsError(true)
         console.log(err)
-        setTimeout(() => setIsError(false), 4000)
       }
     }
 
@@ -51,7 +46,7 @@ const App = () => {
     e.preventDefault()
     const fetchData = async () => {
       try {
-        const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=1&appid=65d04fbbdd2d88832927515ecaae77b7`)
+        const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=65d04fbbdd2d88832927515ecaae77b7`)
 
         console.log(city.data)
 
@@ -67,8 +62,6 @@ const App = () => {
         setWeatherData(weather.data)
       } catch (err) {
         console.log(err)
-        setIsError(true)
-        setTimeout(() => setIsError(false), 4000)
       }
     }
 
@@ -81,6 +74,7 @@ const App = () => {
         <form>
           <input
             type='text'
+            value={search}
             onChange={handleSearch}
             placeholder='Search for City...'
           />

@@ -19,7 +19,10 @@ const Daily = ({ time, weather, tempHi, tempLo }) => {
             <Icon 
                 weather={weather}
             />
-            <p className="week-temp"><span>{Math.round(tempHi)}</span> {Math.round(tempLo)}</p>
+            <div className="week-temp">
+                <p className="temp-hi">{Math.round(tempHi)}</p>
+                <p>{Math.round(tempLo)}</p>
+            </div>
         </div>
     )
 }

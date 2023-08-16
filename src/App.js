@@ -4,6 +4,7 @@ import Daily from './components/daily';
 import Icon from './components/icon';
 import SearchResults from './components/searchResults';
 import './styles/index.css'
+import './styles/searchBar.css'
 import SearchBar from './components/searchBar'
 
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div>
+      <div className='search-container'>
         <SearchBar
           API={API}
           search={search}
@@ -65,35 +66,34 @@ const App = () => {
         {
           weatherData.current &&
           <div>
-            <div>
-              <h2>{cityData.name}</h2>
-              <h3>{cityData.state}</h3>
+            <div className='city-label'>
+              <h2 className='city-name'>{cityData.name}</h2>
+              <h3 className='city-state'>{cityData.state.toUpperCase()}</h3>
             </div>
             
-            <div>
+            <div className='calendar'>
               <p>
                 {`${timestamp.day}, ${timestamp.month} ${timestamp.dayOfMonth}`}
               </p>
             </div>
-            <div>
-              <h1>{Math.round(weatherData.current.temp)}°</h1>
+
+            <div className='current-weather'>
+              <h1 id='current-temp'>{Math.round(weatherData.current.temp)} °</h1>
               <Icon 
                 weather={weatherData.current.weather[0].main}
                 currentTime={weatherData.current.dt}
                 sunrise={weatherData.current.sunrise}
                 sunset={weatherData.current.sunset}
               />
+
+              <p>Winds: {Math.round(weatherData.current.wind_speed)} mph</p>
+              <p>Precipitation: {weatherData.daily[0].pop * 100}%</p>
+              <p>Humidty: {weatherData.current.humidity}%</p>
             </div>  
             
-            <p>Winds: {Math.round(weatherData.current.wind_speed)} mph</p>
-            <p>Precipitation: {weatherData.daily[0].pop * 100}%</p>
-            <p>Humidty: {weatherData.current.humidity}%</p>
+            
           </div>
         }  
-      </div>
-      
-      <div>
-        -------------------------------
       </div>
 
       <div className='week'>

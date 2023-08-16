@@ -1,0 +1,20 @@
+.search-container {
+    padding: 20px;
+}
+
+.searchbar input {
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+}
+
+.searchbar input::placeholder {
+    padding: 0 10px;
+    font-size: 1rem;
+}
+
+.searchbar button {
+    width: 60px;
+    height: 35px;
+}

@@ -74,3 +74,22 @@
     height: 100px;
 }
 
+.footer {
+    font-weight: 600;
+    color: #8590a5;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .icons {
+    display: flex;
+    padding: 15px 0 20px 0;
+}
+
+.icons > * {
+    margin: 0 15px;
+}

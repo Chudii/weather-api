@@ -33,7 +33,8 @@ const SearchResults = ({ results, setResults, setSearch, setCityData, setWeather
                 results && 
                 results.map((result, i) => {
                     return (
-                        <div 
+                        <div
+                            className="result"
                             key={i}
                             onClick={(e) => handleSubmit(e, i)}
                         >

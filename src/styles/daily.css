@@ -1,8 +1,12 @@
 .week {
+    color: #8590a5;
+    font-weight: 600;
     width: 80%;
     background: linear-gradient(6deg, rgba(22,36,65,1) 0%, rgba(20,28,48,1) 100%);
     border-radius: 10px;
     border: 1px solid rgb(74, 80, 102);
+    padding: 15px 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .daily {
@@ -52,9 +56,9 @@
 }
 
 .temp-hi {
-    font-weight: 600;
+    color: #a9b7d3;
     justify-content: flex-end;
-    border-right: 1px solid black;
+    border-right: 1px solid #8590a5;
     padding-right: 10px;
     margin-right: 10px;
 }

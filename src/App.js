@@ -3,6 +3,7 @@ import axios from 'axios';
 import Daily from './components/daily';
 import Icon from './components/icon';
 import SearchResults from './components/searchResults';
+import Footer from './components/footer';
 import './styles/index.css'
 import './styles/searchBar.css'
 import SearchBar from './components/searchBar'
@@ -112,6 +113,8 @@ const App = () => {
           })
         }
       </div>
+
+      <Footer />
     </div>
   );
 }

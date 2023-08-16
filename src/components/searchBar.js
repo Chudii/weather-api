@@ -1,54 +1,53 @@
 import { useState } from "react"
-import SearchResults from "./searchResults"
+import axios from 'axios';
 import "../styles/searchBar.css"
 
-const SearchBar = ({ setCityData, setWeatherData }) => {
-    const [search, setSearch] = useState("")
+const SearchBar = ({ setResults, API, search, setSearch, setCityData, setWeatherData }) => {
 
     const fetchSubmitData = async () => {
         try {
-            const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=65d04fbbdd2d88832927515ecaae77b7`)
-
-            console.log(city.data)
-
-            let lat = city.data[0].lat
-            let lon = city.data[0].lon
-
-            setCityData(city.data)
-
-            const weather = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=65d04fbbdd2d88832927515ecaae77b7`)
-
-            console.log(weather.data)
-
-            setWeatherData(weather.data)
+          const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${API}`)
+    
+          console.log(city.data)
+    
+          let lat = city.data[0].lat
+          let lon = city.data[0].lon
+    
+          setCityData(city.data)
+    
+          const weather = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${API}`)
+    
+          console.log(weather.data)
+    
+          setWeatherData(weather.data)
         } catch (err) {
-            console.log(err)
+          console.log(err)
         }
-    }
+      }
 
     const fetchData = async (value) => {
-        try {
-            const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=65d04fbbdd2d88832927515ecaae77b7`)
+        if (value) {
+            try {
+                const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${API}`)
 
-            console.log(city.data)
-
-            let lat = city.data[0].lat
-            let lon = city.data[0].lon
-
-            setCityData(city.data)
-        } catch (err) {
-            console.log(err)
+                setResults(city)
+            } catch (err) {
+                console.log(err)
+            }
+        } else {
+            setResults([])
         }
     }
 
     const handleSearch = (e) => {
         setSearch(e.target.value)
-        fetchData(value)
+        fetchData(e.target.value)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         fetchSubmitData()
+        setSearch("")
     }
 
     return (
@@ -67,8 +66,6 @@ const SearchBar = ({ setCityData, setWeatherData }) => {
                 >
                     Search
                 </button>
-
-                <SearchResults results={search}/>
             </form>
         </div>
     )

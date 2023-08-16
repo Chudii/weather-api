@@ -4,9 +4,12 @@ import Daily from './components/daily';
 import Icon from './components/icon';
 import SearchResults from './components/searchResults';
 import './styles/index.css'
+import SearchBar from './components/searchBar'
 
 const App = () => {
+  const API = process.env.REACT_APP_API_KEY
   const [search, setSearch] = useState("")
+  const [results, setResults] = useState([])
   const [weatherData, setWeatherData] = useState([])
   const [cityData, setCityData] = useState('Newark')
   const [timestamp, setTimestamp] = useState({
@@ -18,18 +21,16 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const API = process.env.REACT_APP_API_KEY
-
       try {
         const weatherResult = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&units=imperial&appid=${API}`)
 
-        const cityResult = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=Newark,NJ,US&limit=5&appid=${API}`)
+        const cityResult = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=Newark,NJ,US&limit=1&appid=${API}`)
 
         console.log(weatherResult.data)
         console.log(cityResult.data)
 
         setWeatherData(weatherResult.data)
-        setCityData(cityResult.data)
+        setCityData(cityResult.data[0])
       } catch (err) {
         console.log(err)
       }
@@ -38,60 +39,37 @@ const App = () => {
     fetchData()
   }, [])
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const fetchData = async () => {
-      try {
-        const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=65d04fbbdd2d88832927515ecaae77b7`)
-
-        console.log(city.data)
-
-        let lat = city.data[0].lat
-        let lon = city.data[0].lon
-
-        setCityData(city.data)
-
-        const weather = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=65d04fbbdd2d88832927515ecaae77b7`)
-
-        console.log(weather.data)
-
-        setWeatherData(weather.data)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    fetchData()
-  }
-
   return (
     <div className="App">
       <div className='current-day'>
-        <form>
-          <input
-            type='text'
-            value={search}
-            onChange={handleSearch}
-            placeholder='Search for City...'
-          />
+        <SearchBar
+          API={API}
+          search={search}
+          setSearch={setSearch}
+          setResults={setResults}
+          setCityData={setCityData}
+          setWeatherData={setWeatherData}
+        />
 
-          <button 
-            type='submit'
-            onClick={handleSubmit}
-          >Search</button>
-
-          <SearchResults results={search}/>
-        </form>
+        <SearchResults
+          API={API}
+          results={results.data}
+          setResults={setResults}
+          setSearch={setSearch}
+          setCityData={setCityData}
+          setWeatherData={setWeatherData}
+        />
 
         <div className='city'>
           {
-            weatherData.current && 
+            weatherData.current &&
             <div>
-              <h2>{cityData[0].name}</h2>
+              <div>
+                <h2>{cityData.name}</h2>
+                <h3>{cityData.state}</h3>
+              </div>
+              
+              
               <div>
                 <p>
                   {`${timestamp.day}, ${timestamp.month} ${timestamp.dayOfMonth}`}

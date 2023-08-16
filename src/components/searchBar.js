@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useState } from "react";
 import axios from 'axios';
-import "../styles/searchBar.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import "../styles/searchBar.css";
 
 const SearchBar = ({ setResults, API, search, setSearch, setCityData, setWeatherData }) => {
 
@@ -64,7 +66,7 @@ const SearchBar = ({ setResults, API, search, setSearch, setCityData, setWeather
                     type='submit'
                     onClick={handleSubmit}
                 >
-                    Search
+                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#ffffff",}} />
                 </button>
             </form>
         </div>

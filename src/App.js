@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Daily from './components/daily';
 import Icon from './components/icon';
+import SearchResults from './components/searchResults';
 import './styles/index.css'
 
 const App = () => {
   const [search, setSearch] = useState("")
-  const [results, setResults] = useState({})
   const [weatherData, setWeatherData] = useState([])
   const [cityData, setCityData] = useState('Newark')
   const [timestamp, setTimestamp] = useState({
@@ -83,6 +83,8 @@ const App = () => {
             type='submit'
             onClick={handleSubmit}
           >Search</button>
+
+          <SearchResults results={search}/>
         </form>
 
         <div className='city'>

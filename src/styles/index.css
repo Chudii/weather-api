@@ -1,5 +1,18 @@
+@font-face {
+    font-family: "Manrope";
+    src: local("Manrope"),
+    url('../assets/font/Manrope-ExtraLight.ttf') format('truetype')
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', serif;
+}
 
+.App {
+    width: 100%;
+}
 
 .city .icon-container > img {
     width: 100px;

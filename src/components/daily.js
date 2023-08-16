@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Icon from "./icon"
+import "../styles/daily.css"
 
 const Daily = ({ time, weather, tempHi, tempLo }) => {
     const [timestamp, setTimestamp] = useState({
@@ -10,7 +11,7 @@ const Daily = ({ time, weather, tempHi, tempLo }) => {
 
     return (
         <div className="daily">
-            <div>
+            <div className="week-day">
                 <p>{timestamp.day}</p>
                 <p>{timestamp.month}/{timestamp.dayOfMonth}</p>
             </div>
@@ -18,7 +19,7 @@ const Daily = ({ time, weather, tempHi, tempLo }) => {
             <Icon 
                 weather={weather}
             />
-            <h4>{Math.round(tempHi)}° | {Math.round(tempLo)}°</h4>
+            <p className="week-temp"><span>{Math.round(tempHi)}</span> {Math.round(tempLo)}</p>
         </div>
     )
 }

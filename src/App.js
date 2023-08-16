@@ -41,7 +41,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className='current-day'>
+      <div>
         <SearchBar
           API={API}
           search={search}
@@ -59,38 +59,37 @@ const App = () => {
           setCityData={setCityData}
           setWeatherData={setWeatherData}
         />
+      </div>
 
-        <div className='city'>
-          {
-            weatherData.current &&
+      <div className='current-day'>
+        {
+          weatherData.current &&
+          <div>
             <div>
-              <div>
-                <h2>{cityData.name}</h2>
-                <h3>{cityData.state}</h3>
-              </div>
-              
-              
-              <div>
-                <p>
-                  {`${timestamp.day}, ${timestamp.month} ${timestamp.dayOfMonth}`}
-                </p>
-              </div>
-              <div>
-                <h1>{Math.round(weatherData.current.temp)}°</h1>
-                <Icon 
-                  weather={weatherData.current.weather[0].main}
-                  currentTime={weatherData.current.dt}
-                  sunrise={weatherData.current.sunrise}
-                  sunset={weatherData.current.sunset}
-                />
-              </div>  
-              
-              <p>Winds: {Math.round(weatherData.current.wind_speed)} mph</p>
-              <p>Precipitation: {weatherData.daily[0].pop * 100}%</p>
-              <p>Humidty: {weatherData.current.humidity}%</p>
+              <h2>{cityData.name}</h2>
+              <h3>{cityData.state}</h3>
             </div>
-          }  
-        </div>
+            
+            <div>
+              <p>
+                {`${timestamp.day}, ${timestamp.month} ${timestamp.dayOfMonth}`}
+              </p>
+            </div>
+            <div>
+              <h1>{Math.round(weatherData.current.temp)}°</h1>
+              <Icon 
+                weather={weatherData.current.weather[0].main}
+                currentTime={weatherData.current.dt}
+                sunrise={weatherData.current.sunrise}
+                sunset={weatherData.current.sunset}
+              />
+            </div>  
+            
+            <p>Winds: {Math.round(weatherData.current.wind_speed)} mph</p>
+            <p>Precipitation: {weatherData.daily[0].pop * 100}%</p>
+            <p>Humidty: {weatherData.current.humidity}%</p>
+          </div>
+        }  
       </div>
       
       <div>

@@ -20,12 +20,23 @@
     background-color: #212A3E;
 }
 
+.current-day {
+    color: #8590a5;
+    font-weight: 600;
+    width: 80%;
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(6deg, rgba(22,36,65,1) 0%, rgba(20,28,48,1) 100%);
+    border-radius: 10px;
+    border: 1px solid rgb(74, 80, 102);
+}
+
 .city-label {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 0 0 20px 0;
 }
 
 .city-name {
@@ -37,6 +48,8 @@
 }
 
 .calendar {
+    display: flex;
+    justify-content: center;
     padding: 10px 0;
 }
 
@@ -44,9 +57,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid black;
 }
 
 #current-temp {

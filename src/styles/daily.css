@@ -1,3 +1,10 @@
+.week {
+    width: 80%;
+    background: linear-gradient(6deg, rgba(22,36,65,1) 0%, rgba(20,28,48,1) 100%);
+    border-radius: 10px;
+    border: 1px solid rgb(74, 80, 102);
+}
+
 .daily {
     width: 100%;
     display: flex;

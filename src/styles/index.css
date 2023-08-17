@@ -93,3 +93,11 @@
 .icons > * {
     margin: 0 15px;
 }
+
+@media screen and (min-width: 768px) {
+    .current-day, .week {
+        width: 60%;
+        font-size: 1.3rem;
+    }
+
+}

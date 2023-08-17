@@ -90,6 +90,11 @@
     padding: 15px 0 20px 0;
 }
 
+.footer a {
+    color: #8590a5;
+    text-decoration: none;
+}
+
 .icons > * {
     margin: 0 15px;
 }

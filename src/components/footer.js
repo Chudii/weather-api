@@ -6,9 +6,15 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className='icons'>
-                <LinkedInIcon fontSize='large'/>
-                <MailOutlineIcon fontSize='large'/>
-                <GitHubIcon fontSize='large'/>
+                <a href='https://www.linkedin.com/in/chudi-ibida/'>
+                    <LinkedInIcon fontSize='large'/>
+                </a>
+                <a href='mailto:chudiibida3@gmail.com'>
+                    <MailOutlineIcon fontSize='large'/>
+                </a>
+                <a href='https://github.com/Chudii'>
+                    <GitHubIcon fontSize='large'/>
+                </a>
             </div>
             <p>&copy; 2023 CodeNameChu</p>
         </div>

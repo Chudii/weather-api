@@ -3,7 +3,7 @@
     top: 55px;
     background-color: white;
     border-radius: 10px;
-    width: 75%;
+    width: inherit;
     display: flex;
     flex-direction: column;
     max-height: 210px;
@@ -12,4 +12,10 @@
 
 .result {
     padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .search-results {
+        width: 80.5%;
+    }
 }

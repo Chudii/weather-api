@@ -49,3 +49,9 @@
         font-size: 1.2rem;
     }
 }
+
+@media screen and (min-width: 1200px) {
+    .search-container {
+        width: 820px;
+    }
+}

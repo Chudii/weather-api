@@ -69,3 +69,11 @@
     flex-direction: column;
     align-items: center;
 }
+
+@media screen and (min-width: 768px) {
+    .week .week-day {
+        font-size: 1.1rem;
+    }
+
+}
+

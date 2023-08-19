@@ -13,6 +13,7 @@
 
 body {
     background-color: #212A3E;
+    min-width: 360px;
 }
 
 .App {

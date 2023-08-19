@@ -32,6 +32,8 @@ body {
 }
 
 .current-day {
+    display: flex;
+    flex-direction: column;
     color: #8590a5;
     font-weight: 600;
     width: 80%;
@@ -129,6 +131,11 @@ body {
         font-size: 1rem;
     }
 
+    .current-day {
+        justify-content: center;
+        height: 557px;
+    }
+
     .current-day, .week {
         width: 400px;
         margin: 20px 10px;
@@ -138,8 +145,4 @@ body {
         position: relative;
     }
 
-    .footer {
-        position: absolute;
-        width: fit-content;
-    }
 }

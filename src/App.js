@@ -19,14 +19,13 @@ const App = () => {
     month: new Date().toLocaleString('default', { month: 'long' }),
     dayOfMonth: new Date().getDate()
   })
-  const [timezone, setTimezone] = useState(Intl.DateTimeFormat().resolvedOptions().timeZone)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const weatherResult = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=40.735&lon=-74.172&units=imperial&appid=${API}`)
 
-        const cityResult = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=Newark,NJ,US&limit=1&appid=${API}`)
+        const cityResult = await axios(`https://api.openweathermap.org/geo/1.0/direct?q=Newark,NJ,US&limit=1&appid=${API}`)
 
         console.log(weatherResult.data)
         console.log(cityResult.data)

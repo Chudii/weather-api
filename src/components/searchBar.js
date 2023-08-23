@@ -8,7 +8,7 @@ const SearchBar = ({ setResults, API, search, setSearch, setCityData, setWeather
 
     const fetchSubmitData = async () => {
         try {
-          const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${API}`)
+          const city = await axios(`https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${API}`)
     
           console.log(city.data)
     
@@ -30,7 +30,7 @@ const SearchBar = ({ setResults, API, search, setSearch, setCityData, setWeather
     const fetchData = async (value) => {
         if (value) {
             try {
-                const city = await axios(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${API}`)
+                const city = await axios(`https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${API}`)
 
                 setResults(city)
             } catch (err) {

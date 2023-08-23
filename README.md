@@ -34,7 +34,7 @@ To run this project, you will first need a .env file. Then you will need to add 
 - [ ] Allow weather search to specify by city, state (& country)
 - [ ] Fully refractor code so it runs as efficiently as possible
 - [ ] Implement requested API info for better user experience
-
+- [ ] Set default city to the city of user's current location
 
 ## Want to Contribute? 
 

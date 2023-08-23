@@ -12,7 +12,6 @@ const SearchResults = ({ results, setResults, setSearch, setCityData, setWeather
 
             const weather = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${API}`)
 
-            console.log(weather.data)
             setWeatherData(weather.data)
         } catch (err) {
             console.log(err)

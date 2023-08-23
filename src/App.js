@@ -27,9 +27,6 @@ const App = () => {
 
         const cityResult = await axios(`https://api.openweathermap.org/geo/1.0/direct?q=Newark,NJ,US&limit=1&appid=${API}`)
 
-        console.log(weatherResult.data)
-        console.log(cityResult.data)
-
         setWeatherData(weatherResult.data)
         setCityData(cityResult.data[0])
       } catch (err) {

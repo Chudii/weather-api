@@ -10,16 +10,12 @@ const SearchBar = ({ setResults, API, search, setSearch, setCityData, setWeather
         try {
           const city = await axios(`https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${API}`)
     
-          console.log(city.data)
-    
           let lat = city.data[0].lat
           let lon = city.data[0].lon
     
           setCityData(city.data)
     
           const weather = await axios(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${API}`)
-    
-          console.log(weather.data)
     
           setWeatherData(weather.data)
         } catch (err) {

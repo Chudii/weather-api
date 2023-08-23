@@ -14,6 +14,12 @@
     padding: 10px;
 }
 
+.result:hover {
+    color: white;
+    cursor: pointer;
+    background-color: rgb(179, 189, 206);
+}
+
 @media screen and (min-width: 768px) {
     .search-results {
         width: 80.5%;
